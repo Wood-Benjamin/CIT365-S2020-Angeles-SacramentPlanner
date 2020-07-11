@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SacrementPlanner.Data;
 
 namespace SacrementPlanner.Migrations
 {
     [DbContext(typeof(SacrementPlannerContext))]
-    partial class SacrementPlannerContextModelSnapshot : ModelSnapshot
+    [Migration("20200711224331_SpeakerControler2")]
+    partial class SpeakerControler2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

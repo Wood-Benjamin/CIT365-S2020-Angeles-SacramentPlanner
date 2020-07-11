@@ -22,7 +22,7 @@ namespace SacrementPlanner.Data
             new Meeting{MeetingDate=DateTime.Parse("2005-10-01"),Presiding="Carson",Conducting="Jeff",OpeningHymn="Carson",Invocation="Carson",SacamentHymn="Carson",ClosingHymn="Carson",Benediction="Carson"},
             new Meeting{MeetingDate=DateTime.Parse("2005-11-01"),Presiding="Carson",Conducting="Bob",OpeningHymn="Carson",Invocation="Carson",SacamentHymn="Carson",ClosingHymn="Carson",Benediction="Carson"},
             new Meeting{MeetingDate=DateTime.Parse("2005-12-01"),Presiding="Carson",Conducting="Frank",OpeningHymn="Carson",Invocation="Carson",SacamentHymn="Carson",ClosingHymn="Carson",Benediction="Carson"},
-            new Meeting{MeetingDate=DateTime.Parse("2005-01-01"),Presiding="Carson",Conducting="Justin",OpeningHymn="Carson",Invocation="Carson",SacamentHymn="Carson",ClosingHymn="Carson",Benediction="Carson"}
+            new Meeting{MeetingDate=DateTime.Parse("2005-10-11"),Presiding="Carson",Conducting="Justin",OpeningHymn="Carson",Invocation="Carson",SacamentHymn="Carson",ClosingHymn="Carson",Benediction="Carson"}
             };
             foreach (Meeting m in meeting)
             {
@@ -35,8 +35,7 @@ namespace SacrementPlanner.Data
             new Speaker{SpeakerName="Ben Wood",Topic="Holy Ghost"},
             new Speaker{SpeakerName="Mason Wood",Topic="Holy Ghost"},
             new Speaker{SpeakerName="Camden Wood",Topic="Holy Ghost"},
-            new Speaker{SpeakerName="Avery Wood",Topic="Holy Ghost"},
-            new Speaker{SpeakerName="Owen Wood",Topic="Holy Ghost"}
+            new Speaker{SpeakerName="Avery Wood",Topic="Holy Ghost"}
             };
             foreach (Speaker s in speaker)
             {
@@ -59,7 +58,7 @@ namespace SacrementPlanner.Data
                     SpeakerID = speaker.Single(s => s.SpeakerName == "Camden Wood").ID
                     },
                 new SpeakerAssignment {
-                    MeetingID = meeting.Single(m => m.MeetingDate == DateTime.Parse("2005-1001-01")).ID,
+                    MeetingID = meeting.Single(m => m.MeetingDate == DateTime.Parse("2005-10-11")).ID,
                     SpeakerID = speaker.Single(s => s.SpeakerName == "Avery Wood").ID
                     }
             };
