@@ -30,36 +30,28 @@ namespace SacrementPlanner.Data
             }
             context.SaveChanges();
 
-            var speaker = new Speaker[]
-            {
-            new Speaker{SpeakerName="Ben Wood",Topic="Holy Ghost"},
-            new Speaker{SpeakerName="Mason Wood",Topic="Holy Ghost"},
-            new Speaker{SpeakerName="Camden Wood",Topic="Holy Ghost"},
-            new Speaker{SpeakerName="Avery Wood",Topic="Holy Ghost"}
-            };
-            foreach (Speaker s in speaker)
-            {
-                context.Speaker.Add(s);
-            }
-            context.SaveChanges();
 
             var meetingSpeakers = new SpeakerAssignment[]
             {
                 new SpeakerAssignment {
                     MeetingID = meeting.Single(m => m.MeetingDate == DateTime.Parse("2005-10-01")).ID,
-                    SpeakerID = speaker.Single(s => s.SpeakerName == "Ben Wood").ID
+                    SpeakerName = "Ben Wood",
+                    SpeakerTopic = "Holy Ghost"
                     },
                 new SpeakerAssignment {
                     MeetingID = meeting.Single(m => m.MeetingDate == DateTime.Parse("2005-11-01")).ID,
-                    SpeakerID = speaker.Single(s => s.SpeakerName == "Mason Wood").ID
+                    SpeakerName = "Mason Wood",
+                    SpeakerTopic = "Repentance"
                     },
                 new SpeakerAssignment {
                     MeetingID = meeting.Single(m => m.MeetingDate == DateTime.Parse("2005-12-01")).ID,
-                    SpeakerID = speaker.Single(s => s.SpeakerName == "Camden Wood").ID
+                    SpeakerName = "Camden Wood",
+                    SpeakerTopic = "Prayer"
                     },
                 new SpeakerAssignment {
                     MeetingID = meeting.Single(m => m.MeetingDate == DateTime.Parse("2005-10-11")).ID,
-                    SpeakerID = speaker.Single(s => s.SpeakerName == "Avery Wood").ID
+                    SpeakerName = "Avery Wood",
+                    SpeakerTopic = "Temples"
                     }
             };
 

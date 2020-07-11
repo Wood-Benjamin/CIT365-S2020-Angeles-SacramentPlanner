@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SacrementPlanner.Models.Speaker>
+﻿@model IEnumerable<SacrementPlanner.Models.SpeakerAssignment>
 
 @{
     ViewData["Title"] = "Index";
@@ -16,10 +16,10 @@
                 @Html.DisplayNameFor(model => model.SpeakerName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Topic)
+                @Html.DisplayNameFor(model => model.SpeakerTopic)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Meeting.MeetingDate)
+                @Html.DisplayNameFor(model => model.Meeting)
             </th>
             <th></th>
         </tr>
@@ -31,7 +31,7 @@
                 @Html.DisplayFor(modelItem => item.SpeakerName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Topic)
+                @Html.DisplayFor(modelItem => item.SpeakerTopic)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Meeting.MeetingDate)

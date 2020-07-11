@@ -7,9 +7,10 @@ namespace SacrementPlanner.Models
 {
     public class SpeakerAssignment
     {
+        public int ID { get; set; }
         public int MeetingID { get; set; }
-        public int SpeakerID { get; set; }
+        public string SpeakerName { get; set; }
+        public string SpeakerTopic { get; set; }
         public Meeting Meeting { get; set; }
-        public Speaker Speaker { get; set; }
     }
 }

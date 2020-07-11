@@ -1,4 +1,4 @@
-﻿@model SacrementPlanner.Models.Speaker
+﻿@model SacrementPlanner.Models.SpeakerAssignment
 
 @{
     ViewData["Title"] = "Create";
@@ -6,21 +6,25 @@
 
 <h1>Create</h1>
 
-<h4>Speaker</h4>
+<h4>SpeakerAssignment</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="MeetingID" class="control-label"></label>
+                <select asp-for="MeetingID" class ="form-control" asp-items="ViewBag.MeetingID"></select>
+            </div>
+            <div class="form-group">
                 <label asp-for="SpeakerName" class="control-label"></label>
                 <input asp-for="SpeakerName" class="form-control" />
                 <span asp-validation-for="SpeakerName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Topic" class="control-label"></label>
-                <input asp-for="Topic" class="form-control" />
-                <span asp-validation-for="Topic" class="text-danger"></span>
+                <label asp-for="SpeakerTopic" class="control-label"></label>
+                <input asp-for="SpeakerTopic" class="form-control" />
+                <span asp-validation-for="SpeakerTopic" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
