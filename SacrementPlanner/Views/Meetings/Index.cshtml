@@ -1,0 +1,100 @@
+﻿@model IEnumerable<SacrementPlanner.Models.Meeting>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by Conducting: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">@Html.DisplayNameFor(model => model.MeetingDate)</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Presiding)
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["ConductSortParm"]">@Html.DisplayNameFor(model => model.Conducting)</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecialNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OpeningHymn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Invocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SacamentHymn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IntermediateHymn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClosingHymn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Benediction)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MeetingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Presiding)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Conducting)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecialNotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpeningHymn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Invocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SacamentHymn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IntermediateHymn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClosingHymn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Benediction)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
