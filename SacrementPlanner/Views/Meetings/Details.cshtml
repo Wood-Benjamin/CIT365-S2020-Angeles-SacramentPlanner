@@ -52,6 +52,20 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.SacamentHymn)
         </dd>
+        @if (Model.SpeakerAssigments.Count > 0)
+        {
+            int i = 1;
+            @foreach (var item in Model.SpeakerAssigments.OrderBy(s => s.SpeakerName))
+            {
+                <dt class=" col-sm-2">
+                    Speaker #@i  
+                </dt>
+                <dd class ="col-sm-10">
+                    @Html.DisplayFor(model => item.SpeakerName)
+                </dd>
+                i++;
+            }
+        }
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IntermediateHymn)
         </dt>

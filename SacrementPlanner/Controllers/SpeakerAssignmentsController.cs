@@ -20,10 +20,24 @@ namespace SacrementPlanner.Controllers
         }
 
         // GET: SpeakerAssignments
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            var sacrementPlannerContext = _context.SpeakerAssignment.Include(s => s.Meeting);
-            return View(await sacrementPlannerContext.ToListAsync());
+            var speakerAssignments = from s in _context.SpeakerAssignment select s;
+            if (id != 0)
+            {
+                speakerAssignments = speakerAssignments.Where(s => s.MeetingID.Equals(id));
+            }
+            speakerAssignments = speakerAssignments.OrderBy(s => s.SpeakerName);
+            if (speakerAssignments == null)
+            {
+                return NotFound();
+            }
+            ViewData["MeetingID"] = id;
+
+            return View(await speakerAssignments.Include(s => s.Meeting).ToListAsync());
+
+            //var sacrementPlannerContext = _context.SpeakerAssignment.Include(s => s.Meeting);
+            //return View(await sacrementPlannerContext.ToListAsync());
         }
 
         // GET: SpeakerAssignments/Details/5
@@ -46,10 +60,22 @@ namespace SacrementPlanner.Controllers
         }
 
         // GET: SpeakerAssignments/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
-            ViewData["MeetingID"] = new SelectList(_context.Meeting, "ID", "ID");
-            return View();
+            var speakerAssignment = new SpeakerAssignment();
+            speakerAssignment.MeetingID = id.Value;
+            ViewData["MeetingID"] = id;
+
+            var meeting = _context.Meeting.SingleOrDefaultAsync(s => s.ID == id);
+            if (meeting == null)
+            {
+                return NotFound();
+            }
+            speakerAssignment.Meeting = new Meeting();
+            return View(speakerAssignment);
+
+            //ViewData["MeetingID"] = new SelectList(_context.Meeting, "ID", "ID");
+            //return View();
         }
 
         // POST: SpeakerAssignments/Create
@@ -59,13 +85,15 @@ namespace SacrementPlanner.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,MeetingID,SpeakerName,SpeakerTopic")] SpeakerAssignment speakerAssignment)
         {
+            speakerAssignment.ID = 0;
             if (ModelState.IsValid)
             {
                 _context.Add(speakerAssignment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { id = speakerAssignment.MeetingID });
             }
-            ViewData["MeetingID"] = new SelectList(_context.Meeting, "ID", "ID", speakerAssignment.MeetingID);
+            ViewData["MeetingID"] = speakerAssignment.MeetingID;
+            //ViewData["MeetingID"] = new SelectList(_context.Meeting, "ID", "ID", speakerAssignment.MeetingID);
             return View(speakerAssignment);
         }
 
@@ -77,7 +105,8 @@ namespace SacrementPlanner.Controllers
                 return NotFound();
             }
 
-            var speakerAssignment = await _context.SpeakerAssignment.FindAsync(id);
+            //var speakerAssignment = await _context.SpeakerAssignment.FindAsync(id);
+            var speakerAssignment = await _context.SpeakerAssignment.Include(s => s.MeetingID).SingleOrDefaultAsync(m => m.ID == id);
             if (speakerAssignment == null)
             {
                 return NotFound();
