@@ -44,14 +44,17 @@
             <th>
                 @Html.DisplayNameFor(model => model.SacamentHymn)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.IntermediateHymn)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.ClosingHymn)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Benediction)
+            </th>
+            <th>
+                Speakers
             </th>
             <th></th>
         </tr>
@@ -80,9 +83,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.SacamentHymn)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.IntermediateHymn)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.ClosingHymn)
             </td>
@@ -90,10 +93,25 @@
                 @Html.DisplayFor(modelItem => item.Benediction)
             </td>
             <td>
-                <a asp-controller="SpeakerAssignments" asp-action="Create" asp-route-id="@item.ID" class="btn btn-primary">Add Speaker</a>
-                <a asp-action="Edit" asp-route-id="@item.ID"  class="btn btn-default">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.ID"  class="btn btn-info">Details</a>
-                <a asp-action="Delete" asp-route-id="@item.ID"  class="btn btn-danger">Delete</a>
+                @{
+                    if (item.SpeakerAssigments.Where(x => x.MeetingID == item.ID).Count() > 0)
+                        {
+                        <a asp-controller="SpeakerAssignments" asp-action="Index" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.SpeakerAssigments.Count)</a><br>;
+
+                        }
+                    else
+                        {
+                        <a>None</a>;
+                        }
+                    
+                 }
+                <a asp-controller="SpeakerAssignments" asp-action="Create" asp-route-id="@item.ID">Add Speaker</a><br>
+                <a asp-controller="SpeakerAssignments" asp-action="Index" asp-route-id="@item.ID">View Speakers</a>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-info">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
             </td>
         </tr>
 }
