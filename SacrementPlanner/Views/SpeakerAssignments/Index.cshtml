@@ -1,10 +1,13 @@
 ﻿@model IEnumerable<SacrementPlanner.Models.SpeakerAssignment>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Speaker Assignments";
+    DateTime meetingDate = Convert.ToDateTime(Model.ElementAt(0).Meeting.MeetingDate);
+    string showMeetingDate = meetingDate.ToString("MM/dd/yyyy");
+    
 }
 
-<h1>Index</h1>
+    <h1>Meeting Date:  @showMeetingDate</h1>
 
 <p>
     <a asp-action="Create" asp-route-id="@ViewData["MeetingID"]">Add Another Speaker For This Meeting</a>

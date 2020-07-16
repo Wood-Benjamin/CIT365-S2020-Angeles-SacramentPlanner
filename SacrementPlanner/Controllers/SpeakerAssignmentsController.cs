@@ -178,7 +178,7 @@ namespace SacrementPlanner.Controllers
             var speakerAssignment = await _context.SpeakerAssignment.FindAsync(id);
             _context.SpeakerAssignment.Remove(speakerAssignment);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index) , new { id = speakerAssignment.MeetingID });
         }
 
         private bool SpeakerAssignmentExists(int id)
