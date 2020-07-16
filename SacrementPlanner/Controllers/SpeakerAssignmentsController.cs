@@ -176,6 +176,10 @@ namespace SacrementPlanner.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var speakerAssignment = await _context.SpeakerAssignment.FindAsync(id);
+            if (speakerAssignment == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
             _context.SpeakerAssignment.Remove(speakerAssignment);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index) , new { id = speakerAssignment.MeetingID });
