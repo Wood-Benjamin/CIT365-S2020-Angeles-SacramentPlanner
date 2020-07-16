@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SacrementPlanner.Models.MeetingViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,9 +16,10 @@ namespace SacrementPlanner.Models
         public string OpeningHymn { get; set; }
         public string Invocation { get; set; }
         public string SacamentHymn { get; set; }
-        public ICollection<SpeakerAssignment> SpeakerAssigments { get; set; }
         public string IntermediateHymn { get; set; }
         public string ClosingHymn { get; set; }
         public string Benediction { get; set; }
+
+        public ICollection<SpeakerAssignment> SpeakerAssigments { get; set; }
     }
 }
