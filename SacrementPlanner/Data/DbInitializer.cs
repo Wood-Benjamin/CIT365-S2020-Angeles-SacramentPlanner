@@ -112,6 +112,7 @@ namespace SacrementPlanner.Data
                     }
             };
 
+
             foreach (SpeakerAssignment ms in meetingSpeakers)
             {
                 context.SpeakerAssignment.Add(ms);
