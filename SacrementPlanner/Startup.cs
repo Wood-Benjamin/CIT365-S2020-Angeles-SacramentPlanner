@@ -33,7 +33,7 @@ namespace SacrementPlanner
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<SacrementPlannerContext>(options =>
+            services.AddDbContext<SacramentPlannerContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 

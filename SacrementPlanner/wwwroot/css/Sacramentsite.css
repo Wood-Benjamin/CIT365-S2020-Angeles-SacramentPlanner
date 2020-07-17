@@ -1,0 +1,284 @@
+﻿/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px
+}
+
+table {
+    border: solid;
+    border-width: 1px;
+    border-color: gray;
+    box-shadow: 5px 5px  green;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    color: #424242;
+    font-size: large
+}
+
+    table tr:nth-child(2n+2) {
+        background-color: #596e944d
+    }
+
+.btn {
+    width: 100px;
+    box-shadow: 3px 3px 3px gray
+}
+
+.theButtons {
+    text-align: right
+}
+
+
+.navbar-inverse {
+    background-color: #596e94;
+    border-color: #596e94
+}
+
+.navbar-header .navbar-brand {
+    color: white;
+    font-size: x-large;
+    text-shadow: 3px 3px 3px black;
+    font-family: 'Great Vibes', cursive;
+    letter-spacing: 1px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+    text-shadow: 3px 3px 3px black;
+    font-family: 'Yantramanav', sans-serif;
+    font-size: large;
+}
+
+    .navbar-inverse .navbar-nav > li > a:hover {
+    }
+
+footer {
+    background-color: #596e94;
+    border-color: #596e94;
+    text-align: center;
+    padding: 10px;
+    font-family: 'Yantramanav', sans-serif;
+    color: white;
+    text-shadow: 3px 3px 3px black;
+    font-size: 20px
+}
+
+.jumbotron {
+    background-color: #596e94
+}
+
+    .jumbotron h1 {
+        font-family: 'Great Vibes', cursive;
+        color: white;
+        text-align: center;
+        text-shadow: 3px 3px 3px black
+    }
+
+
+.container body-content {
+    background-color: green
+}
+
+h2 {
+    margin-top: 80px
+}
+
+img {
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px black;
+}
+
+.moto {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 40px;
+    border: solid;
+    border-width: 1px;
+    box-shadow: 5px 5px 5px gray;
+    padding: 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    color: gray
+}
+
+
+
+.frontArea a p {
+    text-align: center;
+    margin-top: 10px;
+    color: black;
+    font-family: 'Yantramanav', sans-serif;
+    font-size: large
+}
+
+#sacramentprintdetails {
+    padding: 20px;
+}
+
+.Iwantitcentered {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.draggable, .draggableHeader {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3px
+}
+
+    .draggable div, .draggableHeader div {
+        padding: 10px
+    }
+
+#speaker_area {
+    margin-top: 20px;
+    border: solid;
+    border-width: 1px;
+}
+
+
+    #speaker_area .draggable:nth-child(odd) {
+        background-color: #586d936b;
+    }
+
+
+
+.loader {
+    position: absolute;
+    z-index: 1000;
+    left: 40%;
+    display: none;
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+#mainBulletin {
+    overflow: auto;
+    border: solid;
+    padding: 20px;
+}
+
+    #mainBulletin .bulletinRow #date {
+        grid-column: 1/4;
+        text-align: center;
+        overflow: auto;
+        margin-top: 5px;
+        margin-bottom: 10px
+    }
+
+    #mainBulletin .bulletinRow {
+        overflow: auto;
+        display: grid;
+        grid-column-gap: 15px;
+        grid-template-columns: auto 5fr auto;
+        margin-bottom: 30px;
+        font-family: 'Yantramanav', sans-serif;
+        font-size: larger;
+        font-weight: bold;
+    }
+
+        #mainBulletin .bulletinRow div:nth-child(2) {
+            border-bottom: dashed;
+            border-width: 1px;
+            align-self: center;
+        }
+
+
+
+
+        #mainBulletin .bulletinRow div:nth-child(3) {
+            text-align: right;
+        }
+
+    #mainBulletin .bulletinFullRow {
+        grid-column: 1/4;
+        text-align: center;
+    }
+
+    #mainBulletin .hymn {
+        grid-column: 1/4;
+        text-align: center;
+        font-style: italic;
+        letter-spacing: 4px;
+    }
+
+#grid-container {
+    display: grid;
+    grid-template-columns: 2.25fr 1fr;
+    grid-gap: 4px;
+}
+
+#temple {
+    padding: 15px;
+}
+
+#icons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 15px;
+    padding: 15px;
+}
+
+    #icons a p {
+        text-align: center;
+        margin-top: 10px;
+        color: black;
+    }
+
+    #icons label {
+        text-align: center;
+    }
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 990px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none
+    }
+
+    h2 {
+        margin-top: 130px;
+    }
+}
+
+
+@media screen and (max-width: 766px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none
+    }
+
+    h2 {
+        margin-top: 80px
+    }
+}

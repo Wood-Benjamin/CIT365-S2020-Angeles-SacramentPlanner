@@ -8,7 +8,7 @@ using SacrementPlanner.Data;
 
 namespace SacrementPlanner.Migrations
 {
-    [DbContext(typeof(SacrementPlannerContext))]
+    [DbContext(typeof(SacramentPlannerContext))]
     partial class SacrementPlannerContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

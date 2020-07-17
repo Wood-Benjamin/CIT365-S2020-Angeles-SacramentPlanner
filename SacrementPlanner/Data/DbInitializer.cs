@@ -7,7 +7,7 @@ namespace SacrementPlanner.Data
 {
     public static class DbInitializer
     {
-        public static void Initialize(SacrementPlannerContext context)
+        public static void Initialize(SacramentPlannerContext context)
         {
             context.Database.EnsureCreated();
 

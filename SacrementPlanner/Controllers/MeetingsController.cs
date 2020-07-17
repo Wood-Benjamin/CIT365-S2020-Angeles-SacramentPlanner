@@ -12,9 +12,9 @@ namespace SacrementPlanner.Controllers
 {
     public class MeetingsController : Controller
     {
-        private readonly SacrementPlannerContext _context;
+        private readonly SacramentPlannerContext _context;
 
-        public MeetingsController(SacrementPlannerContext context)
+        public MeetingsController(SacramentPlannerContext context)
         {
             _context = context;
         }
