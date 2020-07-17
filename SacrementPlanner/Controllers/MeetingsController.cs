@@ -165,7 +165,11 @@ namespace SacrementPlanner.Controllers
                 speakerAssignment.MeetingID = meeting.ID;
                 ViewData["MeetingID"] = meeting.ID;
                 speakerAssignment.Meeting = new Meeting();
-                return View(speakerAssignment);
+                //call create get method in the speakerAssignments Controller
+                // var speakerController = new SpeakerAssignmentsController(_context);
+                //speakerController.Create(meeting.ID);
+                //return View(meeting);
+                return RedirectToAction("Create", "SpeakerAssignmentsController", new { meetingId = meeting.ID } );
             }
 
            
