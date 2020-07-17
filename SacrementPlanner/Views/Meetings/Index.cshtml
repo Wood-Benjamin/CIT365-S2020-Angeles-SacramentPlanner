@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<SacrementPlanner.Models.Meeting>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Sacrement Meeting Planner";
 }
 
-<h1>Index</h1>
+<h1>Sacrement Meeting Planner</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -92,21 +92,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Benediction)
             </td>
-            <td>
-                @{
-                    if (item.SpeakerAssigments.Where(x => x.MeetingID == item.ID).Count() > 0)
-                        {
-                        <a asp-controller="SpeakerAssignments" asp-action="Index" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.SpeakerAssigments.Count)</a><br>;
-
-                        }
-                    else
-                        {
-                        <a>None</a>;
-                        }
-                    
-                 }
-                <a asp-controller="SpeakerAssignments" asp-action="Create" asp-route-id="@item.ID">Add Speaker</a><br>
-                <a asp-controller="SpeakerAssignments" asp-action="Index" asp-route-id="@item.ID">View Speakers</a>
+            <td style="text-align:center">
+                @if (item.SpeakerAssigments.Count > 0)
+                {
+                    <p asp-controller="SpeakerAssigments" asp-action="Index" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.SpeakerAssigments.Count)</p>
+                    }
+                else
+                { 
+                    <p asp-controller="SpeakerAssigments" asp-action="Create" asp-route-id="@item.ID">No Speakers</p>
+                }
+                <a asp-controller="SpeakerAssignments" asp-action="Create" asp-route-id="@item.ID" class="btn btn-outline-primary">Add</a><br>
+                <a asp-controller="SpeakerAssignments" asp-action="Index" asp-route-id="@item.ID" class="btn btn-outline-secondary">View</a>
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a>

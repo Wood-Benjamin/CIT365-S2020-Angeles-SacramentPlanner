@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SacrementPlanner.Data;
 using SacrementPlanner.Models;
+using SacrementPlanner.Models.MeetingViewModels;
 
 namespace SacrementPlanner.Controllers
 {
@@ -22,12 +24,16 @@ namespace SacrementPlanner.Controllers
         // GET: Meetings
         public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
+            
+
             ViewData["ConductSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["CurrentFilter"] = searchString;
 
             var meetings = from m in _context.Meeting
-                           select m;
+                .Include(m => m.SpeakerAssigments)
+                .AsNoTracking()
+                select m;
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -48,6 +54,40 @@ namespace SacrementPlanner.Controllers
                     meetings = meetings.OrderBy(m => m.Conducting);
                     break;
             }
+
+            //List<CountSpeakers> speakers = new List<CountSpeakers>();
+            //var conn = _context.Database.GetDbConnection();
+            //try
+            //{
+            //    await conn.OpenAsync();
+            //    using (var command = conn.CreateCommand())
+            //    {
+            //        string query = "SELECT SpeakerCountID, COUNT(*) AS SpeakerCount "
+            //            + "FROM SpeakerAssigment "
+            //            + "WHERE MeetingID == Meeting.ID ";
+            //        command.CommandText = query;
+            //        DbDataReader reader = await command.ExecuteReaderAsync();
+
+            //        if (reader.HasRows)
+            //        {
+            //            while (await reader.ReadAsync())
+            //            {
+            //                var row = new CountSpeakers { CountSpeakersID = reader.GetInt32(1), SpeakerCount = reader.GetInt32(1) };
+            //                speakers.Add(row);
+            //            }
+            //        }
+            //        reader.Dispose();
+            //    }
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
+
+
+
+
+
             return View(await meetings.AsNoTracking().ToListAsync());
         }
 
@@ -60,6 +100,8 @@ namespace SacrementPlanner.Controllers
             }
 
             var meeting = await _context.Meeting
+                .Include(m => m.SpeakerAssigments)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (meeting == null)
             {
@@ -104,6 +146,36 @@ namespace SacrementPlanner.Controllers
             {
                 return NotFound();
             }
+            return View(meeting);
+        }
+
+        //AddSpeaker
+        // POST: Meetings/Create & Add Speaker
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> AddSpeaker([Bind("ID,MeetingDate,Presiding,Conducting,SpecialNotes,OpeningHymn,Invocation,SacamentHymn,IntermediateHymn,ClosingHymn,Benediction")] Meeting meeting)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(meeting);
+                await _context.SaveChangesAsync();
+               // return RedirectToAction(nameof(Index));
+                var speakerAssignment = new SpeakerAssignment();
+                speakerAssignment.MeetingID = meeting.ID;
+                ViewData["MeetingID"] = meeting.ID;
+                speakerAssignment.Meeting = new Meeting();
+                return View(speakerAssignment);
+            }
+
+           
+
+           // var meeting = _context.Meeting.SingleOrDefaultAsync(s => s.ID == id);
+           // if (meeting == null)
+            //{
+              //  return NotFound();
+            //}
+           
             return View(meeting);
         }
 
