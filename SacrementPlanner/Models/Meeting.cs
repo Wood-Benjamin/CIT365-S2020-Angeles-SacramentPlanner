@@ -19,5 +19,7 @@ namespace SacrementPlanner.Models
         public string IntermediateHymn { get; set; }
         public string ClosingHymn { get; set; }
         public string Benediction { get; set; }
+
+      
     }
 }

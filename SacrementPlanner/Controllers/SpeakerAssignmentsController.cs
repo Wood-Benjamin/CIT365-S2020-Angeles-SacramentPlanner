@@ -71,6 +71,7 @@ namespace SacrementPlanner.Controllers
             {
                 return NotFound();
             }
+
             speakerAssignment.Meeting = new Meeting();
             return View(speakerAssignment);
 
@@ -90,6 +91,9 @@ namespace SacrementPlanner.Controllers
             {
                 _context.Add(speakerAssignment);
                 await _context.SaveChangesAsync();
+               //Open the meeting and update the has speaker field
+                var meeting = _context.Meeting.SingleOrDefaultAsync(s => s.ID == speakerAssignment.MeetingID);
+                //_context.Meeting.HasSpeakers = true; Need to add Has speakers to dbase
                 return RedirectToAction(nameof(Index), new { id = speakerAssignment.MeetingID });
             }
             ViewData["MeetingID"] = speakerAssignment.MeetingID;
