@@ -106,7 +106,7 @@ namespace SacrementPlanner.Controllers
             }
 
             //var speakerAssignment = await _context.SpeakerAssignment.FindAsync(id);
-            var speakerAssignment = await _context.SpeakerAssignment.Include(s => s.MeetingID).SingleOrDefaultAsync(m => m.ID == id);
+            var speakerAssignment = await _context.SpeakerAssignment.Include(s => s.Meeting).SingleOrDefaultAsync(m => m.ID == id);
             if (speakerAssignment == null)
             {
                 return NotFound();
@@ -120,35 +120,45 @@ namespace SacrementPlanner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,MeetingID,SpeakerName,SpeakerTopic")] SpeakerAssignment speakerAssignment)
+        public async Task<IActionResult> Edit(int id) //, [Bind("ID,MeetingID,SpeakerName,SpeakerTopic")] SpeakerAssignment speakerAssignment)
         {
-            if (id != speakerAssignment.ID)
-            {
-                return NotFound();
-            }
+            //if (id != speakerassignment.id)
+            //if (id == null)
+            //{
+            //    return notfound();
+            //}
 
-            if (ModelState.IsValid)
+            var speakerToUpdate = await _context.SpeakerAssignment
+                .FirstOrDefaultAsync(s => s.MeetingID == id);
+
+            //if (ModelState.IsValid)
+            if (await TryUpdateModelAsync<SpeakerAssignment>(speakerToUpdate,
+                "",
+                s => s.SpeakerName, s => s.SpeakerTopic))
             {
                 try
                 {
-                    _context.Update(speakerAssignment);
+                    //_context.Update(speakerAssignment);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SpeakerAssignmentExists(speakerAssignment.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    ModelState.AddModelError("", "Unable to save changes. " +
+                        "Try again, and if the problem persists, " +
+                        "see your system administrator.");
+                    //if (!SpeakerAssignmentExists(speakerAssignment.ID))
+                    //{
+                    //    return NotFound();
+                    //}
+                    //else
+                    //{
+                    //    throw;
+                    //}
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { id = speakerToUpdate.MeetingID });
             }
-            ViewData["MeetingID"] = new SelectList(_context.Meeting, "ID", "ID", speakerAssignment.MeetingID);
-            return View(speakerAssignment);
+            ViewData["MeetingID"] = new SelectList(_context.Meeting, "ID", "ID", speakerToUpdate.MeetingID);
+            return View(speakerToUpdate);
         }
 
         // GET: SpeakerAssignments/Delete/5
