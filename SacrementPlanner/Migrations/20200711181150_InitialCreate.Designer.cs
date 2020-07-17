@@ -9,7 +9,7 @@ using SacrementPlanner.Data;
 
 namespace SacrementPlanner.Migrations
 {
-    [DbContext(typeof(SacramentPlannerContext))]
+    [DbContext(typeof(SacrementPlannerContext))]
     [Migration("20200711181150_InitialCreate")]
     partial class InitialCreate
     {

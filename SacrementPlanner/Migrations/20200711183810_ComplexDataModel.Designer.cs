@@ -9,7 +9,7 @@ using SacrementPlanner.Data;
 
 namespace SacrementPlanner.Migrations
 {
-    [DbContext(typeof(SacramentPlannerContext))]
+    [DbContext(typeof(SacrementPlannerContext))]
     [Migration("20200711183810_ComplexDataModel")]
     partial class ComplexDataModel
     {

@@ -24,7 +24,7 @@ namespace SacrementPlanner
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<SacramentPlannerContext>();
+                    var context = services.GetRequiredService<SacrementPlannerContext>();
                     DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)

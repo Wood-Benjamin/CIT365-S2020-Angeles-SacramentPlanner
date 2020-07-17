@@ -7,9 +7,9 @@ using SacrementPlanner.Models;
 
 namespace SacrementPlanner.Data
 {
-    public class SacramentPlannerContext : DbContext
+    public class SacrementPlannerContext : DbContext
     {
-        public SacramentPlannerContext (DbContextOptions<SacramentPlannerContext> options) : base(options)
+        public SacrementPlannerContext (DbContextOptions<SacrementPlannerContext> options) : base(options)
         {
         }
 
