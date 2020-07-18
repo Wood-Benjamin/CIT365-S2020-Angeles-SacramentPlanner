@@ -4,9 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>SpeakerAssignment</h4>
+<h1>Add Speaker</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -28,14 +26,14 @@
                 <span asp-validation-for="SpeakerTopic" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-secondary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-controller="SpeakerAssignments" asp-action="Index"  asp-route-id="@Model.MeetingID">Back to List</a>
+    <a asp-controller="SpeakerAssignments" asp-action="Index"  asp-route-id="@Model.MeetingID">Back to Speaker List</a>
 </div>
 
 @section Scripts {

@@ -151,37 +151,37 @@ namespace SacrementPlanner.Controllers
 
         //AddSpeaker
         // POST: Meetings/Create & Add Speaker
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> AddSpeaker([Bind("ID,MeetingDate,Presiding,Conducting,SpecialNotes,OpeningHymn,Invocation,SacamentHymn,IntermediateHymn,ClosingHymn,Benediction")] Meeting meeting)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(meeting);
-                await _context.SaveChangesAsync();
-               // return RedirectToAction(nameof(Index));
-                var speakerAssignment = new SpeakerAssignment();
-                speakerAssignment.MeetingID = meeting.ID;
-                ViewData["MeetingID"] = meeting.ID;
-                speakerAssignment.Meeting = new Meeting();
-                //call create get method in the speakerAssignments Controller
-                // var speakerController = new SpeakerAssignmentsController(_context);
-                //speakerController.Create(meeting.ID);
-                //return View(meeting);
-                return RedirectToAction("Create", "SpeakerAssignmentsController", new { meetingId = meeting.ID } );
-            }
+        //public async Task<IActionResult> AddSpeaker([Bind("ID,MeetingDate,Presiding,Conducting,SpecialNotes,OpeningHymn,Invocation,SacamentHymn,IntermediateHymn,ClosingHymn,Benediction")] Meeting meeting)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Add(meeting);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Index));
+        //        var speakerAssignment = new SpeakerAssignment();
+        //        speakerAssignment.MeetingID = meeting.ID;
+        //        ViewData["MeetingID"] = meeting.ID;
+        //        speakerAssignment.Meeting = new Meeting();
+        //        call create get method in the speakerAssignments Controller
+        //         var speakerController = new SpeakerAssignmentsController(_context);
+        //        speakerController.Create(meeting.ID);
+        //        return View(meeting);
+        //        return RedirectToAction("Create", "SpeakerAssignmentsController", new { meetingId = meeting.ID });
+        //    }
 
-           
 
-           // var meeting = _context.Meeting.SingleOrDefaultAsync(s => s.ID == id);
-           // if (meeting == null)
-            //{
-              //  return NotFound();
-            //}
-           
-            return View(meeting);
-        }
+
+        //    var meeting = _context.Meeting.SingleOrDefaultAsync(s => s.ID == id);
+        //    if (meeting == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(speakerAssignment.MeetingID);
+        //}
 
         // POST: Meetings/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -227,6 +227,8 @@ namespace SacrementPlanner.Controllers
             }
 
             var meeting = await _context.Meeting
+                .Include(m => m.SpeakerAssigments)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (meeting == null)
             {
