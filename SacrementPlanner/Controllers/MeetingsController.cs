@@ -55,39 +55,6 @@ namespace SacrementPlanner.Controllers
                     break;
             }
 
-            //List<CountSpeakers> speakers = new List<CountSpeakers>();
-            //var conn = _context.Database.GetDbConnection();
-            //try
-            //{
-            //    await conn.OpenAsync();
-            //    using (var command = conn.CreateCommand())
-            //    {
-            //        string query = "SELECT SpeakerCountID, COUNT(*) AS SpeakerCount "
-            //            + "FROM SpeakerAssigment "
-            //            + "WHERE MeetingID == Meeting.ID ";
-            //        command.CommandText = query;
-            //        DbDataReader reader = await command.ExecuteReaderAsync();
-
-            //        if (reader.HasRows)
-            //        {
-            //            while (await reader.ReadAsync())
-            //            {
-            //                var row = new CountSpeakers { CountSpeakersID = reader.GetInt32(1), SpeakerCount = reader.GetInt32(1) };
-            //                speakers.Add(row);
-            //            }
-            //        }
-            //        reader.Dispose();
-            //    }
-            //}
-            //finally
-            //{
-            //    conn.Close();
-            //}
-
-
-
-
-
             return View(await meetings.AsNoTracking().ToListAsync());
         }
 
@@ -148,40 +115,6 @@ namespace SacrementPlanner.Controllers
             }
             return View(meeting);
         }
-
-        //AddSpeaker
-        // POST: Meetings/Create & Add Speaker
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-
-        //public async Task<IActionResult> AddSpeaker([Bind("ID,MeetingDate,Presiding,Conducting,SpecialNotes,OpeningHymn,Invocation,SacamentHymn,IntermediateHymn,ClosingHymn,Benediction")] Meeting meeting)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(meeting);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //        var speakerAssignment = new SpeakerAssignment();
-        //        speakerAssignment.MeetingID = meeting.ID;
-        //        ViewData["MeetingID"] = meeting.ID;
-        //        speakerAssignment.Meeting = new Meeting();
-        //        call create get method in the speakerAssignments Controller
-        //         var speakerController = new SpeakerAssignmentsController(_context);
-        //        speakerController.Create(meeting.ID);
-        //        return View(meeting);
-        //        return RedirectToAction("Create", "SpeakerAssignmentsController", new { meetingId = meeting.ID });
-        //    }
-
-
-
-        //    var meeting = _context.Meeting.SingleOrDefaultAsync(s => s.ID == id);
-        //    if (meeting == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(speakerAssignment.MeetingID);
-        //}
 
         // POST: Meetings/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

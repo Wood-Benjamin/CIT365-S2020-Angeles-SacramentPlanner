@@ -35,9 +35,6 @@ namespace SacrementPlanner.Controllers
             ViewData["MeetingID"] = id;
 
             return View(await speakerAssignments.Include(s => s.Meeting).ToListAsync());
-
-            //var sacrementPlannerContext = _context.SpeakerAssignment.Include(s => s.Meeting);
-            //return View(await sacrementPlannerContext.ToListAsync());
         }
 
         // GET: SpeakerAssignments/Details/5
@@ -74,9 +71,6 @@ namespace SacrementPlanner.Controllers
 
             speakerAssignment.Meeting = new Meeting();
             return View(speakerAssignment);
-
-            //ViewData["MeetingID"] = new SelectList(_context.Meeting, "ID", "ID");
-            //return View();
         }
 
         // POST: SpeakerAssignments/Create
@@ -91,13 +85,10 @@ namespace SacrementPlanner.Controllers
             {
                 _context.Add(speakerAssignment);
                 await _context.SaveChangesAsync();
-               //Open the meeting and update the has speaker field
                 var meeting = _context.Meeting.SingleOrDefaultAsync(s => s.ID == speakerAssignment.MeetingID);
-                //_context.Meeting.HasSpeakers = true; Need to add Has speakers to dbase
                 return RedirectToAction(nameof(Index), new { id = speakerAssignment.MeetingID });
             }
             ViewData["MeetingID"] = speakerAssignment.MeetingID;
-            //ViewData["MeetingID"] = new SelectList(_context.Meeting, "ID", "ID", speakerAssignment.MeetingID);
             return View(speakerAssignment);
         }
 
@@ -109,61 +100,54 @@ namespace SacrementPlanner.Controllers
                 return NotFound();
             }
 
-            //var speakerAssignment = await _context.SpeakerAssignment.FindAsync(id);
-            var speakerAssignment = await _context.SpeakerAssignment.Include(s => s.Meeting).SingleOrDefaultAsync(m => m.ID == id);
+            var speakerAssignment = await _context.SpeakerAssignment
+                .Include(s => s.Meeting)
+                .SingleOrDefaultAsync(m => m.ID == id);
             if (speakerAssignment == null)
             {
                 return NotFound();
             }
-            ViewData["MeetingID"] = new SelectList(_context.Meeting, "ID", "ID", speakerAssignment.MeetingID);
+            ViewData["MeetingID"] = speakerAssignment.Meeting; //new SelectList(_context.Meeting, "ID", "MeetingID", speakerAssignment.MeetingID);
             return View(speakerAssignment);
         }
 
         // POST: SpeakerAssignments/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id) //, [Bind("ID,MeetingID,SpeakerName,SpeakerTopic")] SpeakerAssignment speakerAssignment)
+        public async Task<IActionResult> EditPost(int? id)
         {
-            //if (id != speakerassignment.id)
-            //if (id == null)
-            //{
-            //    return notfound();
-            //}
+            if (id == null)
+            {
+                return NotFound();
+            }
 
             var speakerToUpdate = await _context.SpeakerAssignment
-                .FirstOrDefaultAsync(s => s.MeetingID == id);
-
-            //if (ModelState.IsValid)
+                .FirstOrDefaultAsync(c => c.ID == id);
+            
             if (await TryUpdateModelAsync<SpeakerAssignment>(speakerToUpdate,
                 "",
-                s => s.SpeakerName, s => s.SpeakerTopic))
+                s => s.MeetingID, s => s.SpeakerName, s => s.SpeakerTopic))
             {
                 try
                 {
-                    //_context.Update(speakerAssignment);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (DbUpdateException /* ex */)
                 {
+                    //Log the error (uncomment ex variable name and write a log.)
                     ModelState.AddModelError("", "Unable to save changes. " +
                         "Try again, and if the problem persists, " +
                         "see your system administrator.");
-                    //if (!SpeakerAssignmentExists(speakerAssignment.ID))
-                    //{
-                    //    return NotFound();
-                    //}
-                    //else
-                    //{
-                    //    throw;
-                    //}
                 }
                 return RedirectToAction(nameof(Index), new { id = speakerToUpdate.MeetingID });
             }
-            ViewData["MeetingID"] = new SelectList(_context.Meeting, "ID", "ID", speakerToUpdate.MeetingID);
+            
             return View(speakerToUpdate);
         }
+
 
         // GET: SpeakerAssignments/Delete/5
         public async Task<IActionResult> Delete(int? id)
