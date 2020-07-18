@@ -2,22 +2,25 @@
 
 @{
     ViewData["Title"] = "Edit";
+    string showMeetingDate = "Meeting Date: ";
+    DateTime meetingDate = Convert.ToDateTime(Model.Meeting.MeetingDate);
+    showMeetingDate = "Meeting Date: " + meetingDate.ToString("MM/dd/yyyy");
 }
 
-<h1>Edit</h1>
+<h1>Edit Speaker Assignment</h1>
 
-<h4>SpeakerAssignment</h4>
+<h4>@showMeetingDate</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ID" />
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="MeetingID" class="control-label"></label>
                 <select asp-for="MeetingID" class="form-control"></select>
                 <span asp-validation-for="MeetingID" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="SpeakerName" class="control-label"></label>
                 <input asp-for="SpeakerName" class="form-control" />
@@ -29,14 +32,14 @@
                 <span asp-validation-for="SpeakerTopic" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save"  class="btn btn-secondary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index" asp-route-id="@Model.MeetingID">Back to List</a>
+    <a asp-action="Index" asp-route-id="@Model.MeetingID">Back to Speaker List</a>
 </div>
 
 @section Scripts {

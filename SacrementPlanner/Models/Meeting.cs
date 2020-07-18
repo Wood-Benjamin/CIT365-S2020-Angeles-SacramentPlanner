@@ -12,6 +12,8 @@ namespace SacrementPlanner.Models
         public int ID { get; set; }
 
         [Display(Name = "Meeting Date")]
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Please enter a Meeting date, 'MM/DD/YYYY'.")]
         public DateTime MeetingDate { get; set; }
         public string Presiding { get; set; }
         public string Conducting { get; set; }
@@ -22,7 +24,7 @@ namespace SacrementPlanner.Models
         public string Invocation { get; set; }
         [Display(Name = "Sacrament Hymn")]
         public string SacamentHymn { get; set; }
-        [Display(Name = "Intermediate Hymn")]
+        [Display(Name = "Musical Number")]
         public string IntermediateHymn { get; set; }
         [Display(Name = "Closing Hymn")]
         public string ClosingHymn { get; set; }

@@ -7,9 +7,7 @@
     font-weight: 500;
 }
 
-.h1, .h2, .h3 {
-    font-family: 'Fondamento';
-}
+
 
 .body-content {
     
@@ -43,16 +41,15 @@ home {
 
 table {
     border: solid;
-    border-width: 1px;
-    border-color: gray;
-    box-shadow: 5px 5px  green;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-    color #424242;
+    border-width: .4px;
+    border-color: #d9d9da;
+    box-shadow: 5px 5px 8px #596e75, 10px 10px 8px #596e85, 15px 15px 8px #596e94;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: large
 }
 
     table tr:nth-child(2n+2) {
-        background-color: chocolate
+        background-color: #d9d9da;
     }
 
 .btn {
@@ -68,6 +65,16 @@ table {
 .navbar-inverse {
     background-color: #596e94;
     border-color: #596e94
+}
+
+.navbar, .footer {
+    background-color: #596e94 !important;
+    font-family: "Fondamento";
+}
+
+.nav-link {
+    color: white !important;
+    text-decoration: None !important;
 }
 
 
@@ -90,11 +97,19 @@ table {
     .navbar-inverse .navbar-nav > li > a:hover {
     }
 
+.btn {
+    margin: .2em;
+}
+
+.btn-secondary {
+    background-color: #596e94 !important;
+}
+
 footer {
     background-color: #596e944d;
     border-color: #596e94;
     text-align: center;
-    padding: 10px;
+    padding-bottom: 10px;
     font-family: 'Yantramanav', sans-serif;
     color: white;
     text-shadow: 3px 3px 3px black;
@@ -300,4 +315,35 @@ img {
     
 }
 
+h1, h2, h3 {
+    font-family: 'Fondamento' !important;
+}
 
+#about {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+#aboutContext {
+    margin: 30px;
+    text-align: justify;
+    width: 30em;
+}
+#contact {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+#contact img {
+    width: 300px;
+}
+#contactContext, address {
+    flex-flow: column nowrap;
+    margin-left: 30px;
+}
+th {
+    white-space: nowrap;
+}
+#plannerLink {
+    text-decoration: underline;
+}
