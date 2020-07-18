@@ -3,19 +3,22 @@
     padding-left: 15px;
     padding-right: 15px
 }
-
+home {
+    border: solid;
+    border-width: 1px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 22px;
+}
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
 .carousel-inner .item img[src$=".svg"] {
     width: 100%
 }
 
-/* QR code generator */
 #qrCode {
     margin: 15px
 }
