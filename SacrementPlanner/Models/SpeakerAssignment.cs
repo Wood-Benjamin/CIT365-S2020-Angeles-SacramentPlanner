@@ -12,10 +12,12 @@ namespace SacrementPlanner.Models
         public int MeetingID { get; set; }
 
         [Display(Name = "Speaker Name")]
+        [Required(ErrorMessage = "Please enter the Speaker's name.")]
         public string SpeakerName { get; set; }
         [Display(Name = "Speaker Topic")]
+        [Required(ErrorMessage = "Please enter a Topic.")]
         public string SpeakerTopic { get; set; }
-        [Display(Name = "Date")]
+        [Display(Name = "Meeting Date")]
         public Meeting Meeting { get; set; }
     }
 }

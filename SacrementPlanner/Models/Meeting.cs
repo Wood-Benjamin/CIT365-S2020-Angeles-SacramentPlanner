@@ -13,6 +13,7 @@ namespace SacrementPlanner.Models
 
         [Display(Name = "Meeting Date")]
         [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Please enter a Meeting date, 'MM/DD/YYYY'.")]
         public DateTime MeetingDate { get; set; }
         public string Presiding { get; set; }
         public string Conducting { get; set; }

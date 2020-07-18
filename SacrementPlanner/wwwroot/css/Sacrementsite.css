@@ -316,3 +316,13 @@ h1, h2, h3 {
     font-family: 'Fondamento' !important;
 }
 
+#about {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+#aboutContext {
+    margin: 30px;
+    text-align: justify;
+    width: 30em;
+}
