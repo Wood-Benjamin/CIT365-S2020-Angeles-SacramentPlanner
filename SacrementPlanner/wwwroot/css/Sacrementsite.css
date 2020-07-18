@@ -6,6 +6,11 @@
     font-size: 125%;
     font-weight: 500;
 }
+
+.h1, .h2, .h3 {
+    font-family: 'Fondamento';
+}
+
 .body-content {
     
     background-color: #cbefef;
