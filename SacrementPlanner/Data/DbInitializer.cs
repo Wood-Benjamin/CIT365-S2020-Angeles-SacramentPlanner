@@ -24,7 +24,8 @@ namespace SacrementPlanner.Data
             new Meeting{MeetingDate=DateTime.Parse("2020-08-16"),Presiding="Bishop John Smith",Conducting="Henry Johnson",OpeningHymn="211. While Shepherds Watched Their Flocks",Invocation="Mike Jones",SacamentHymn="183. In Remembrance of Thy Suffering",ClosingHymn="97. Lead, Kindly Light",Benediction="Trish Young"},
             new Meeting{MeetingDate=DateTime.Parse("2020-08-23"),Presiding="1st Counselor Greg Brown",Conducting="Greg Brown",OpeningHymn="5. High on the Mountain Top",Invocation="Jeff Miller",SacamentHymn="188. Thy Will, O Lord, Be Done",ClosingHymn="26. Joseph Smith’s First Prayer",Benediction="Beth Miller"},
             new Meeting{MeetingDate=DateTime.Parse("2020-08-30"),Presiding="Bishop John Smith",Conducting="Greg Brown",OpeningHymn="67. Glory to God on High",Invocation="Spencer Wilson",SacamentHymn="193. I Stand All Amazed",ClosingHymn="227. There Is Sunshine in My Soul Today",Benediction="Jessica Moore"},
-            new Meeting{MeetingDate=DateTime.Parse("2020-09-06"),Presiding="Bishop John Smith",Conducting="John Smith",OpeningHymn="60. Battle Hymn of the Republic",Invocation="Jim Taylor",SacamentHymn="190. In Memory of the Crucified",ClosingHymn="241. Count Your Blessings",Benediction="Madison Taylor"}
+            new Meeting{MeetingDate=DateTime.Parse("2020-09-06"),Presiding="Bishop John Smith",Conducting="John Smith",OpeningHymn="60. Battle Hymn of the Republic",Invocation="Jim Taylor",SacamentHymn="190. In Memory of the Crucified",ClosingHymn="241. Count Your Blessings",Benediction="Madison Taylor"},
+            new Meeting{MeetingDate=DateTime.Parse("2020-10-04"),SpecialNotes="General Conference"}
             };
             foreach (Meeting m in meeting)
             {
