@@ -1,10 +1,13 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Cantata+One&family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&family=Roboto&display=swap');
 
-
-.body-content {
+.body {
     font-family: 'Lato', sans-serif;
     font-size: 125%;
     font-weight: 500;
+}
+.body-content {
+    
     background-color: #cbefef;
     padding-left: 15px;
     padding-right: 15px
