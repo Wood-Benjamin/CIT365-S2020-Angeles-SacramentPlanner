@@ -1,5 +1,10 @@
-﻿
+﻿@import url('https://fonts.googleapis.com/css2?family=Cantata+One&family=Lato&display=swap');
+
+
 .body-content {
+    font-family: 'Lato', sans-serif;
+    font-size: 125%;
+    font-weight: 500;
     background-color: #cbefef;
     padding-left: 15px;
     padding-right: 15px
@@ -113,6 +118,10 @@ img {
     max-width: 100%;
     border-radius: 20px;
     box-shadow: 5px 5px 5px black;
+}
+
+.scripture {
+    margin-top: 2em;
 }
 
 .moto {
