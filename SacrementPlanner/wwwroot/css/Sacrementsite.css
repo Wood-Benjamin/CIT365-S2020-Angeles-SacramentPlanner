@@ -71,8 +71,8 @@ table {
     }
 
 footer {
-    background-color: #596e94;
-    border-color: #596e94;
+    background-color: #a6fbfc;
+    border-color: #a33535;
     text-align: center;
     padding: 10px;
     font-family: 'Yantramanav', sans-serif;
@@ -240,9 +240,6 @@ img {
     grid-gap: 4px;
 }
 
-#temple {
-    padding: 15px;
-}
 
 #icons {
     display: grid;
