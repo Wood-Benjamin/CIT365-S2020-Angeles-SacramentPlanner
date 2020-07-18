@@ -1,21 +1,26 @@
 ﻿
 .body-content {
+    background-color: #cbefef;
     padding-left: 15px;
     padding-right: 15px
 }
-
+home {
+    border: solid;
+    border-width: 1px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: x-large;
+    background-color: deepskyblue;
+}
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
 .carousel-inner .item img[src$=".svg"] {
     width: 100%
 }
 
-/* QR code generator */
 #qrCode {
     margin: 15px
 }
@@ -31,7 +36,7 @@ table {
 }
 
     table tr:nth-child(2n+2) {
-        background-color: #596e944d
+        background-color: chocolate
     }
 
 .btn {
@@ -50,7 +55,7 @@ table {
 }
 
 .navbar-header .navbar-brand {
-    color: white;
+    color: dodgerblue;
     font-size: x-large;
     text-shadow: 3px 3px 3px black;
     font-family: 'Great Vibes', cursive;
@@ -68,7 +73,7 @@ table {
     }
 
 footer {
-    background-color: #596e94;
+    background-color: #596e944d;
     border-color: #596e94;
     text-align: center;
     padding: 10px;
@@ -95,7 +100,11 @@ footer {
 }
 
 h2 {
+    background-color: chocolate;
+    font-size: x-large;
     margin-top: 80px
+    
+    
 }
 
 img {
@@ -237,9 +246,6 @@ img {
     grid-gap: 4px;
 }
 
-#temple {
-    padding: 15px;
-}
 
 #icons {
     display: grid;
@@ -268,16 +274,7 @@ img {
     h2 {
         margin-top: 130px;
     }
+    
 }
 
 
-@media screen and (max-width: 766px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none
-    }
-
-    h2 {
-        margin-top: 80px
-    }
-}
