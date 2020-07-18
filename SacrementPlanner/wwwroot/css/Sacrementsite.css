@@ -8,7 +8,8 @@ home {
     border: solid;
     border-width: 1px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 24px;
+    font-size: x-large;
+    background-color: deepskyblue;
 }
 /* Carousel */
 .carousel-caption p {
@@ -35,7 +36,7 @@ table {
 }
 
     table tr:nth-child(2n+2) {
-        background-color: #596e944d
+        background-color: chocolate
     }
 
 .btn {
@@ -54,7 +55,7 @@ table {
 }
 
 .navbar-header .navbar-brand {
-    color: white;
+    color: dodgerblue;
     font-size: x-large;
     text-shadow: 3px 3px 3px black;
     font-family: 'Great Vibes', cursive;
@@ -72,8 +73,8 @@ table {
     }
 
 footer {
-    background-color: #a6fbfc;
-    border-color: #a33535;
+    background-color: #596e944d;
+    border-color: #596e94;
     text-align: center;
     padding: 10px;
     font-family: 'Yantramanav', sans-serif;
@@ -99,7 +100,11 @@ footer {
 }
 
 h2 {
+    background-color: chocolate;
+    font-size: x-large;
     margin-top: 80px
+    
+    
 }
 
 img {
@@ -269,16 +274,7 @@ img {
     h2 {
         margin-top: 130px;
     }
+    
 }
 
 
-@media screen and (max-width: 766px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none
-    }
-
-    h2 {
-        margin-top: 80px
-    }
-}
