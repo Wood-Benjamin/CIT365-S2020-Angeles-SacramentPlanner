@@ -1,10 +1,16 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Cantata+One&family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&family=Roboto&display=swap');
 
-
-.body-content {
+.body {
     font-family: 'Lato', sans-serif;
     font-size: 125%;
     font-weight: 500;
+}
+
+
+
+.body-content {
+    
     background-color: #cbefef;
     padding-left: 15px;
     padding-right: 15px
@@ -34,14 +40,13 @@ table {
     border: solid;
     border-width: 1px;
     border-color: gray;
-    box-shadow: 5px 5px  green;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-    color #424242;
+    box-shadow: 5px 5px #;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif color #d9d9da;
     font-size: large
 }
 
     table tr:nth-child(2n+2) {
-        background-color: chocolate
+        background-color: #d9d9da;
     }
 
 .btn {
@@ -57,6 +62,16 @@ table {
 .navbar-inverse {
     background-color: #596e94;
     border-color: #596e94
+}
+
+.navbar, .footer {
+    background-color: #596e94 !important;
+    font-family: "Fondamento";
+}
+
+.nav-link {
+    color: white !important;
+    text-decoration: None !important;
 }
 
 
@@ -78,6 +93,14 @@ table {
 
     .navbar-inverse .navbar-nav > li > a:hover {
     }
+
+.btn {
+    margin: .2em;
+}
+
+.btn-secondary {
+    background-color: #596e94 !important;
+}
 
 footer {
     background-color: #596e944d;
@@ -289,4 +312,7 @@ img {
     
 }
 
+h1, h2, h3 {
+    font-family: 'Fondamento' !important;
+}
 
