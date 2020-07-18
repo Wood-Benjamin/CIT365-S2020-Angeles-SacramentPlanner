@@ -24,6 +24,8 @@ namespace SacrementPlanner.Controllers
         // GET: Meetings
         public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
+            
+
             ViewData["ConductSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["CurrentFilter"] = searchString;
@@ -144,6 +146,40 @@ namespace SacrementPlanner.Controllers
             {
                 return NotFound();
             }
+            return View(meeting);
+        }
+
+        //AddSpeaker
+        // POST: Meetings/Create & Add Speaker
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> AddSpeaker([Bind("ID,MeetingDate,Presiding,Conducting,SpecialNotes,OpeningHymn,Invocation,SacamentHymn,IntermediateHymn,ClosingHymn,Benediction")] Meeting meeting)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(meeting);
+                await _context.SaveChangesAsync();
+               // return RedirectToAction(nameof(Index));
+                var speakerAssignment = new SpeakerAssignment();
+                speakerAssignment.MeetingID = meeting.ID;
+                ViewData["MeetingID"] = meeting.ID;
+                speakerAssignment.Meeting = new Meeting();
+                //call create get method in the speakerAssignments Controller
+                // var speakerController = new SpeakerAssignmentsController(_context);
+                //speakerController.Create(meeting.ID);
+                //return View(meeting);
+                return RedirectToAction("Create", "SpeakerAssignmentsController", new { meetingId = meeting.ID } );
+            }
+
+           
+
+           // var meeting = _context.Meeting.SingleOrDefaultAsync(s => s.ID == id);
+           // if (meeting == null)
+            //{
+              //  return NotFound();
+            //}
+           
             return View(meeting);
         }
 
